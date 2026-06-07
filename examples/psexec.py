@@ -641,8 +641,9 @@ if __name__ == '__main__':
     options = parser.parse_args()
 
     # Init the example's logger theme
-    logger.init(options.ts, options.debug)
-
+    # logger.init(options.ts, options.debug)
+    # It's possible that whoever wrote this wasn't aware of the py syntactic sugar here. init(options.ts, options.debug) is actually 3 params, not 2, causing an error. fixed simply by removing the options.debug, didn't seem to affect basic usage and exploitation.
+    logger.init(options.ts)
     if options.codec is not None:
         CODEC = options.codec
     else:
